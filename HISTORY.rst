@@ -6,6 +6,7 @@ History
 -----------
 * Update IMC validation to accept Tetration specific PIDs.
 * Update version to indicate that this build is for tetration by appending "-tet"
+* Disable bdist wheel build in Makefile for dist target
 
 0.9.2.0 (2017-02-10)
 --------------------
