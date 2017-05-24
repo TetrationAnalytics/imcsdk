@@ -2,6 +2,11 @@
 History
 =======
 
+0.9.2.0-tet (2017-05-23)
+-----------
+* Update IMC validation to accept Tetration specific PIDs.
+* Update version to indicate that this build is for tetration by appending "-tet"
+
 0.9.2.0 (2017-02-10)
 --------------------
 * Adds support for IMC version 3.0(1c)
