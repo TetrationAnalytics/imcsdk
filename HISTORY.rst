@@ -1,6 +1,13 @@
 =======
 History
 =======
+
+0.9.3.1-tet (2018-06-05)
+-----------
+* Update IMC validation to accept Tetration specific PIDs.
+* Update version to indicate that this build is for tetration by appending "-tet"
+* Disable bdist wheel build in Makefile for dist target
+
 0.9.3.1 (2018-05-27)
 --------------------
 * Support for more APIs
