@@ -2,11 +2,12 @@
 History
 =======
 
-0.9.3.1-tet (2018-06-05)
+0.9.3.1-tet (2018-08-03)
 -----------
 * Update IMC validation to accept Tetration specific PIDs.
 * Update version to indicate that this build is for tetration by appending "-tet"
 * Disable bdist wheel build in Makefile for dist target
+* Fix https://github.com/CiscoUcs/imcsdk/issues/171
 
 0.9.3.1 (2018-05-27)
 --------------------
