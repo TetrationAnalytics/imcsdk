@@ -1,13 +1,16 @@
 History
 =======
 
+0.9.7-tet-2 (2020-02-14)
+------------------------
+* Add support to disable secure adapater update
+
 0.9.7-tet (2019-10-13)
 ----------------------
 * Update IMC validation to accept Tetration specific PIDs.
 * Update version to indicate that this build is for tetration by appending "-tet"
 * Disable bdist wheel build in Makefile for dist target
 * Fix https://github.com/CiscoUcs/imcsdk/issues/171
-* Add support to disable secure adapater update
 
 0.9.7 (2019-07-08)
 ---------------------
