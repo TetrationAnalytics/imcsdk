@@ -1,6 +1,10 @@
 History
 =======
 
+0.9.7-tet-3 (2020-03-02)
+------------------------
+* Rework support to dsiable secure adapter update
+
 0.9.7-tet-2 (2020-02-14)
 ------------------------
 * Add support to disable secure adapater update
