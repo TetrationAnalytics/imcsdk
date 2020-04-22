@@ -536,7 +536,7 @@ def vmedia_mount_delete(handle, volume_name, server_id=1):
     handle.remove_mo(vmediamap_mo)
 
 
-def vmedia_mount_remove_all(handle, volumes= None, server_id=1):
+def vmedia_mount_remove_all(handle, volumes=None, server_id=1):
     """
     This method will remove all the mapped vmedia mappings and saved vmedia mappings with the specified volumes
 
