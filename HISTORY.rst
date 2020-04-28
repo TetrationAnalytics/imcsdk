@@ -1,6 +1,10 @@
 History
 =======
 
+0.9.10-tet-2 (2020-04-28)
+-------------------------
+* Add in https://github.com/CiscoUcs/imcsdk/pull/211
+
 0.9.10-tet (2020-04-22)
 ------------------------
 * Rework support to dsiable secure adapter update
