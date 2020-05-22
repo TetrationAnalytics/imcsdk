@@ -550,6 +550,38 @@ class ImcSession(object):
         self.__imc = top_system.name
         self.__virtual_ipv4_address = top_system.address
 
+    def _change_session_password(self, new_password, store_old_password=False):
+        """
+        Internal method to update the change the session password
+
+        Args:
+            store_old_password (bool): If set to true, the old password will
+                                       be cached so it can be restored later
+
+        Returns:
+            True on successful connect with the new password
+        """
+        self._logout()
+        if store_old_password:
+            self.__old_password = self.__password
+        self.__password = new_password
+        return self._login()
+
+    def _restore_old_session_password(self):
+        """
+        Internal method to restore an old password to the session.
+
+        Returns:
+            True on successful connect with the old password
+            False if there is no old password
+        """
+        if self.__old_password:
+            self._logout()
+            self.__password = self.__old_password
+            return self._login()
+        return False
+
+
     def _login(self, auto_refresh=None, force=None, timeout=None):
         """
         Internal method responsible to do a login on imc server.

@@ -15,6 +15,7 @@
 import time
 import datetime
 import logging
+from imcsdk.apis.admin.user import local_user_modify
 from imcsdk.imcgenutils import *
 from imcsdk.imccoreutils import IMC_PLATFORM, get_server_dn, \
     get_mo_property_meta
@@ -212,6 +213,36 @@ def firmware_huu_update_monitor(handle, secure_adapter_update=True,
         except:
             _validate_connection(handle)
 
+def _reset_userpass_from_default(handle):
+    """
+    Attempts to login to CIMC using the default password and if successful,
+    resets that the user password to what it was before
+
+    During downgrades, sometimes the user password may be reset to default.
+    To handle this situation we attempt to login using the default password
+    and if that works we reset the user password to what it was before
+    """
+    log.debug("Attempting to login using default password")
+    try:
+        handle.change_session_password('password', store_old_password=True)
+    except Exception as e:
+        if 'Authentication failed' in str(e):
+            log.debug("User password is no longer valid: %s",
+                      str(e))
+        raise
+    time.sleep(5)
+    log.debug("User password has been reset to default, attempting to "
+              "change it back")
+    local_user_modify(handle, name=handle.username,
+                      pwd=handle._ImcSession__old_password)
+    time.sleep(5)
+    try:
+        handle.restore_old_session_password()
+    except Exception as e:
+        log.debug("Unable to connect after updating user password "
+                  "from the default password")
+    time.sleep(5)
+
 
 def _validate_connection(handle, timeout=15 * 60):
     """
@@ -236,6 +267,8 @@ def _validate_connection(handle, timeout=15 * 60):
             # IMC may been in the middle of activation,
             # hence connection would fail
             log.debug("Login to IMC failed: %s", str(e))
+            if 'Authentication failed' in str(e):
+                _reset_userpass_from_default(handle)
 
         if not connected:
             try:

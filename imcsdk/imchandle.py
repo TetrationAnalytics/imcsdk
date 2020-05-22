@@ -125,6 +125,49 @@ class ImcHandle(ImcSession):
 
         self._unset_dump_xml()
 
+    def change_session_password(self, new_password, store_old_password=False):
+        """
+        Changes the session password by logging out of the current session,
+        updating the password in the session then attempting to login with the
+        new password.  This is most useful when changing user passwords.
+
+        Args:
+            new_password (str): The new session password
+            store_old_password (bool): If set to true the old password is
+                retained so it can be restored if needed.
+
+        Returns:
+            True on successful connect with new_password
+
+        Example:
+            handle.change_session_password("newpassword")\n
+            handle.change_session_password("newpassword",
+                                           store_old_password=True)\n
+
+            where handle is ImcHandle()
+        """
+
+        return self._change_session_password(new_password,
+                                             store_old_password=store_old_password)
+
+    def restore_old_session_password(self):
+        """
+        If an old password was saved during a `change_session_password`
+        this method will restore it back to the session by logging out of the
+        current session, restoring the old password to the session then
+        attempting login with the old password.
+
+        Returns:
+            True on successful connect with the old restored password
+
+        Example:
+            handle.restore_old_session_password()\n
+
+            where handle is ImcHandle()
+        """
+        return self._restore_old_session_password()
+
+
     def login(self, auto_refresh=None, force=None, timeout=None):
         """
         Initiates a connection to the server referenced by the ImcHandle.
