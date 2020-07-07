@@ -561,11 +561,10 @@ class ImcSession(object):
         Returns:
             True on successful connect with the new password
         """
-        self._logout()
         if store_old_password:
             self.__old_password = self.__password
         self.__password = new_password
-        return self._login()
+        return self._login(force=True)
 
     def _restore_old_session_password(self):
         """
@@ -576,9 +575,8 @@ class ImcSession(object):
             False if there is no old password
         """
         if self.__old_password:
-            self._logout()
             self.__password = self.__old_password
-            return self._login()
+            return self._login(force=True)
         return False
 
 
