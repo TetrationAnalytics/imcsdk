@@ -1,6 +1,13 @@
 History
 =======
 
+0.9.12-tet (2022-05-03)
+-----------------------
+* Update version to indicate that this build is for tetration by appending "-tet"
+* Add support to disable secure adapater update (cherry-pick commit https://github.com/TetrationAnalytics/imcsdk/commit/dfcb18aca751d61c15ae08253e2f56f6748211d2)
+* Fix https://github.com/CiscoUcs/imcsdk/issues/171 (cherry-pick commit https://github.com/TetrationAnalytics/imcsdk/commit/30bfff9379c83d135afa20c0259e0a942af587be)
+* Update IMC validation to accept Tetration specific PIDs. (cherry-pick commit https://github.com/TetrationAnalytics/imcsdk/commit/93608da711dd6f49ba2a8d68917eaf44e6361294)
+
 0.9.12 (2021-10-28)
 ---------------------
 * Bug fixes
