@@ -171,7 +171,7 @@ def vmedia_mounts_callback(dn, dn_to_vmedia_dict):
     return dn_to_vmedia_dict.get(dn, "Unknown Virtual Media mapping: " + dn)
 
 
-def vmedia_mount_create_all(handle, mappings = None, server_id=1, timeout=60):
+def vmedia_mount_create_all(handle, mappings=None, server_id=1, timeout=60):
     """
         This method will make one request to create all the vmedia mappings
         Args:
@@ -536,9 +536,9 @@ def vmedia_mount_delete(handle, volume_name, server_id=1):
     handle.remove_mo(vmediamap_mo)
 
 
-def vmedia_mount_remove_all(handle, volumes= None, server_id=1):
+def vmedia_mount_remove_all(handle, server_id=1):
     """
-    This method will remove all the mapped vmedia mappings and saved vmedia mappings with the specified volumes
+    This method will remove all the mapped vmedia mappings and saved vmedia mappings
 
     Args:
         handle (ImcHandle)
@@ -552,7 +552,7 @@ def vmedia_mount_remove_all(handle, volumes= None, server_id=1):
         None
 
     Examples:
-        vmedia_mount_remove_all(handle,[a,b])
+        vmedia_mount_remove_all(handle)
     """
     from imcsdk.mometa.comm.CommSavedVMediaMap import CommSavedVMediaMapConsts
 
@@ -562,7 +562,7 @@ def vmedia_mount_remove_all(handle, volumes= None, server_id=1):
     mos = []
     # Loop over each mapping
     for virt_media in virt_media_maps:
-        if virt_media.get_class_id() == 'CommSavedVMediaMap' and virt_media.volume_name in volumes:
+        if virt_media.get_class_id() == 'CommSavedVMediaMap':
             virt_media.admin_action = CommSavedVMediaMapConsts.ADMIN_ACTION_DELETE_VOLUME
             mos.append(virt_media)
         elif virt_media.get_class_id() == 'CommVMediaMap':
@@ -572,8 +572,6 @@ def vmedia_mount_remove_all(handle, volumes= None, server_id=1):
     response = handle.set_mos(mos)
     if response:
         process_conf_mos_response(response, 'vmedia_mount_remove_all')
-
-
 
 
 def vmedia_mount_remove_image(handle, image_type, server_id=1):
