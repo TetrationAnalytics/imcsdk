@@ -36,6 +36,9 @@ class ImcSession(object):
     Parent class of ImcHandle, used internally by ImcHandle class.
     """
 
+    valid_model_prefixes = ["UCSC", "UCS-E", "UCSS", "HX", "APIC-SERVER-"]
+    valid_models = ["R460-4640810", "C260-BASE-2646"]
+
     def __init__(self, ip, username, password, port=None, secure=None,
                  proxy=None, auto_refresh=False, force=False, timeout=None, logger=None):
         self.__ip = ip
@@ -504,13 +507,10 @@ class ImcSession(object):
         return False
 
     def _validate_model(self, model):
-        valid_model_prefixes = ["UCSC", "UCS-E", "UCSS", "HX", "APIC-SERVER-", "DN1", "DN2", "DN3", "ULTM"]
-        valid_models = ["R460-4640810", "C260-BASE-2646"]
-
-        if model in valid_models:
+        if model in ImcSession.valid_models:
             return True
 
-        for prefix in valid_model_prefixes:
+        for prefix in ImcSession.valid_model_prefixes:
             if model.startswith(prefix):
                 return True
 
@@ -528,7 +528,7 @@ class ImcSession(object):
 
         if not response or response.error_code != 0 or \
                 len(response.out_configs.child) == 0:
-            self.logout()
+            self._logout()
             return False
 
         for element in response.out_configs.child:
