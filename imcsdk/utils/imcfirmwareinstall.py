@@ -258,11 +258,15 @@ def firmware_huu_update_monitor(handle, secure_adapter_update=True,
                              update_obj.overall_status)
                 current_status.append(update_obj.overall_status)
                 if (not secure_adapter_update and
-                    'HUU Discovery In Progress' in update_obj.overall_status):
+                    ('HUU Discovery In Progress' in update_obj.overall_status or
+                     'HUU Discovery Complete' in update_obj.overall_status)):
                     # by design secure adapter update is enabled when
                     # the host reboots so if we want to allow adapter
                     # downgrade we need to set it to disabled in the monitor
-                    # loop
+                    # loop, in addition as of 4.2(2*) CIMC no longer allows
+                    # adapter downgrade.  To workaround that you would need
+                    # to first downgrade CIMC to a version that allows adapter
+                    # downgrade, then downgrade adapters.
                     _disable_secure_adapter_update(handle, parent_dn)
 
             time.sleep(interval)
