@@ -1,6 +1,14 @@
 History
 =======
 
+0.9.13-tet (2022-08-19)
+-----------------------
+* Update version to indicate that this build is for tetration by appending "-tet"
+* Add "HUU Discovery Complete" to secure adapter update support (new commit https://github.com/TetrationAnalytics/imcsdk/commit/3fb83195f26e39cd49b9c937c05982dce85f6ac2)
+* Add support to disable secure adapater update (cherry-pick commit https://github.com/TetrationAnalytics/imcsdk/commit/dfcb18aca751d61c15ae08253e2f56f6748211d2)
+* Fix https://github.com/CiscoUcs/imcsdk/issues/171 (cherry-pick commit https://github.com/TetrationAnalytics/imcsdk/commit/30bfff9379c83d135afa20c0259e0a942af587be)
+* Update IMC validation to accept Tetration specific PIDs. (cherry-pick commit https://github.com/TetrationAnalytics/imcsdk/commit/93608da711dd6f49ba2a8d68917eaf44e6361294)
+
 0.9.13 (2022-07-21)
 ---------------------
 * Adds support for IMC version 4.2(2a)
