@@ -1,6 +1,10 @@
 History
 =======
 
+0.9.13+tet (2023-7-19)
+----------------------
+* Repackaged 0.9.13-tet to be PEP-440 (https://peps.python.org/pep-0440/) compliant by changing the version to 0.9.13+tet.
+
 0.9.13-tet (2022-08-19)
 -----------------------
 * Update version to indicate that this build is for tetration by appending "-tet"
