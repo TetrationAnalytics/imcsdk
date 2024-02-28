@@ -1,6 +1,10 @@
 History
 =======
 
+0.9.13+tet1 (2024-2-16)
+-----------------------
+* Added support for new CIMC releae numbering (new commit https://github.com/TetrationAnalytics/imcsdk/commit/a03e67cea3c54ef276587f92214aa0de8a8afac5)
+
 0.9.13+tet (2023-7-19)
 ----------------------
 * Repackaged 0.9.13-tet to be PEP-440 (https://peps.python.org/pep-0440/) compliant by changing the version to 0.9.13+tet.
