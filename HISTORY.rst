@@ -1,5 +1,14 @@
 History
 =======
+0.9.18+tet (2026-05-04)
+-----------------------
+* Update version to be PEP440 compatible by changing "-tet" to "+tet"
+* Update version to indicate that this build is for tetration by appending "-tet"
+* Add "HUU Discovery Complete" to secure adapter update support
+* Add support to disable secure adapater update
+* Fix https://github.com/CiscoUcs/imcsdk/issues/171
+* Update IMC validation to accept Tetration specific PIDs.
+
 0.9.18 (2025-08-28)
 --------------------
 * Add the custom logger to ImcSession and ImcHandle class
